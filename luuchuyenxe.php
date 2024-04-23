@@ -1,5 +1,6 @@
 <?php
 @include('connect.php');
+session_start();
 if (isset($_GET['txma'])) {
     $khid = $_SESSION['kh_ma'];
     $matx = $_GET['txma'];

@@ -1,5 +1,6 @@
 <?php
-include 'connect.php';
+require 'connect.php';
+session_start();
 @include('config/config.php');
 @include('lib/session.php');
 @include_once('lib/database.php');
