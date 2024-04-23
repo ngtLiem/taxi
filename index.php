@@ -315,7 +315,7 @@ if (isset($_SESSION['kh_ma'])) {
           <script>
             var jsonData = <?php echo $jsonData; ?>
           </script>
-          <!-- <script src="js/map_index.js"></script> -->
+          <script src="js/map_index.js"></script>
         </div>
       </div>
     </div>
