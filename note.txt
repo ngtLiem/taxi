@@ -1,0 +1,28 @@
+// câu lệnh select lấy các xe gần tọa độ kh
+
+SELECT x.X_MA, x.X_TEN, x.X_BIENSO, tx.TX_viTriX, tx.TX_viTriY,
+    SQRT(POW(tx.TX_viTriX - <vị_trí_hiện_tại_X>, 2) + POW(tx.TX_viTriY - <vị_trí_hiện_tại_Y>, 2)) AS khoang_cach
+FROM xe x
+JOIN tai_xe tx ON x.X_MA = tx.X_MA
+WHERE x.X_MA IN (
+    SELECT trang_thai.TX_MA
+    FROM trang_thai
+    WHERE trang_thai.TT_TINHTRANG = 1
+)
+ORDER BY khoang_cach ASC
+LIMIT 1;
+
+
+// các xe đang rãnh
+SELECT x.*
+FROM xe x
+INNER JOIN trang_thai tt ON x.X_MA = tt.TX_MA
+WHERE tt.TT_TINHTRANG = 1;
+
+
+INSERT INTO chuyen_xe(CX_MA, TX_MA, KH_MA, CX_TOADOBATDAU, CX_NOIDEN, CX_QUANGDUONG, CX_TOADOBDX, CX_TOADOKT, CX_TOADOBDY, CX_TOADOKTX, CX_trangThai, PTTT_MA) VALUES ()
+
+INSERT INTO thoidiem (tgbd, tgkt)
+SELECT tgbd, DATE_ADD(tgbd, INTERVAL 5 MINUTE) AS tgkt
+FROM thoidiem
+WHERE tgbd = '2024-03-09 14:37:50';
